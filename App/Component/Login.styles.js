@@ -172,6 +172,69 @@ export default {
     alignItems: 'center', 
     backgroundColor: '#00BCFF', 
     marginHorizontal: 10
-  }
+  },
+
+
+  //coba
+
+  HomePage : {
+    padding: 30,
+    justifyContent: 'center',
+    flexDirection: 'column',
+  },
+
+  Cobatitle : { 
+    fontSize : 35,
+    fontWeight : 'bold',
+    textAlign : 'center',
+    color : 'red',
+  },
+  CobaTulisan : { 
+    fontSize : 12,
+    fontStyle : 'italic',
+    textAlign : 'center',
+    color : 'blue',
+  },
+  Cobagaris : {
+    borderBottomWidth : 1,
+    marginTop : 10,
+    marginBottom : 30
+  },
+  isi : {
+    marginTop : 10
+},
+  TextInput : {
+    borderWidth : 1,
+    padding : 10,
+    borderRadius : 10,
+    borderColor : 'grey',
+    height : 45,
+},
+  jarakBox : {
+    marginTop : 10,
+},
+cobaTextInput : {
+  paddingLeft: 5,
+  height: 40, 
+  borderColor: 'gray', 
+  borderWidth: 1 , 
+  color: 'black',
+  margin :10,
+  justifyContent: 'center',
+},
+buttonLiveChat : {
+  marginTop : 10,
+  backgroundColor : 'pink',
+  padding : 10,
+  borderRadius : 10,
+  flexDirection : 'column'
+},
+textButton : {
+  textAlign : 'center',
+  fontWeight : 'bold',
+  fontSize : 15,
+  color : 'black'
+},
+
 
 };

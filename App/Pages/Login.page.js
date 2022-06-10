@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {result} from 'lodash';
-import HomeScreenComponent from '../Component/ContactList.component';
+import HomeScreenComponent from '../Component/Login.component';
 import {getContactFromAPI, deleteContactApi} from '../State/function/generalFunction';
 
 class HomeScreen extends React.Component {

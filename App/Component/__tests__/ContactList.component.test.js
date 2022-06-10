@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import ContactListComponent from '../ContactList.component';
+import ContactListComponent from '../Login.component';
 
-jest.mock('../ContactList.component');
-describe('ContactListComponent', () => {
+jest.mock('../Login.component');
+describe('LoginComponent', () => {
   it('renders correctly', () => {
     const tree = renderer.create(
-      <ContactListComponent navigateTo={jest.fn()} changeLanguage={jest.fn()}/>
+      <LoginComponent navigateTo={jest.fn()} changeLanguage={jest.fn()}/>
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

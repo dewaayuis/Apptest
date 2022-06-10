@@ -3,10 +3,10 @@
 import * as React from 'react';;
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ContactListPage from '../Pages/ContactList.page';
+import HomePage from '../Pages/Home.page';
 
 // this page dual mode, for editing and add new contact
-import ContactFormPage from '../Pages/ContactForm.page';
+import AboutUsPage from '../Pages/AboutUs.page';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,17 +17,18 @@ function  MainRoutes () {
         initialRouteName='Home'>
         <Stack.Screen
           name='Home'
-          component={ContactListPage}
-          options={{ title: 'Contact List' }}
+          component={HomePage}
+          options={{ title: 'Home' }}
+          
         />
         <Stack.Screen
-          name='CreateAccount'
-          component={ContactFormPage}
-          options={{ title: 'Add Contact' }}
+          name='AboutUs'
+          component={AboutUsPage}
+          options={{ title: 'About Us' }}
         />
         <Stack.Screen
           name='EditAccount'
-          component={ContactFormPage}
+          component={AboutUsPage}
           options={{ title: 'Edit Contact' }}
         />
       </Stack.Navigator>

@@ -1,17 +1,17 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import ContactListPage from '../ContactList.page';
+import HomePage from '../Home.page';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 
-jest.mock('../ContactList.page');
+jest.mock('../Home.page');
 const store = createStore(() => ({}));
 
-describe('ContactListPage : ContactListPage', () => {
+describe('HomePage : HomePage', () => {
   it('renders correctly', () => {
     const tree = renderer.create(
       <Provider store={store}>
-        <ContactListPage/>
+        <HomePage/>
       </Provider>
     ).toJSON();
     expect(tree).toMatchSnapshot();

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useCallback, useEffect } from 'react'
+import { GiftedChat } from 'react-native-gifted-chat'
 import {Image, Text, View, TouchableOpacity, TextInput, ScrollView, Modal} from 'react-native';
 import PropTypes from 'prop-types';
 import {result, toLower, size} from 'lodash';
@@ -78,9 +79,42 @@ class HomeScreenComponent extends React.Component {
   // }
 
   goCreate = () => {
-    this.props.navigation.navigate('CreateAccount');
+    this.props.navigation.navigate('AboutUs');
   }
   
+  goLivechat = () => {
+  //   this.props.navigation.navigate('Chatbox');
+    const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    setMessages([
+      {
+        _id: 1,
+        text: 'Hello developer',
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: 'React Native',
+          avatar: 'https://placeimg.com/140/140/any',
+        },
+      },
+    ])
+  }, [])
+
+  const onSend = useCallback((messages = []) => {
+    setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+  }, [])
+
+  return (
+    <GiftedChat
+      messages={'hello'}
+      onSend={messages => onSend(messages)}
+      user={{
+        _id: 1,
+      }}
+    />
+  )
+  }
   // onChangeText=(nextTexttype = '') => {
   //   this.setState({filtering: nextTexttype});
   // }
@@ -163,7 +197,7 @@ class HomeScreenComponent extends React.Component {
           </TouchableOpacity> */}
 
 
-        <TouchableOpacity style={styles.buttonLiveChat} onPress={this.goCreate}>
+        <TouchableOpacity style={styles.buttonLiveChat} onPress={this.goLivechat}>
           <Text style={styles.textButton}>Start Live Chat</Text>
         </TouchableOpacity>
 

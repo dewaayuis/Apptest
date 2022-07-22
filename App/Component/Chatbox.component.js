@@ -1,43 +1,35 @@
-import React, { useState, useCallback, useEffect } from 'react'
-import { GiftedChat } from 'react-native-gifted-chat'
-import {Image, Text, View, TouchableOpacity, TextInput, ScrollView, Modal} from 'react-native';
-import PropTypes from 'prop-types';
-import {result, toLower, size} from 'lodash';
-import styles from './Chatbox.styles';
+import React, { useState, useCallback, useEffect } from 'react';
+import { GiftedChat } from 'react-native-gifted-chat';
 
+export function Example() {
+  const [messages, setMessages] = useState([]);
 
+  useEffect(() => {
+    setMessages([
+      {
+        _id: 1,
+        text: 'Hello developer',
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: 'React Native',
+          avatar: 'https://placeimg.com/140/140/any',
+        },
+      },
+    ])
+  }, [])
 
+  const onSend = useCallback((messages = []) => {
+    setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+  }, [])
 
-class ChatboxComponent extends React.Component {
-  static propTypes = {
-    navigation: PropTypes.object,
-    contactList: PropTypes.array,
-    funcgetContactFromAPI: PropTypes.func,
-    funcdeleteContactApi: PropTypes.func
-  }
-  state={
-    filtering: '',
-    modalDeleteVisible: false,
-    deleteDataModal: {},
-  }
-  
-  render () {
-    const {contactList = [], funcgetContactFromAPI} = this.props;
-    return (
-      <ScrollView contentContainerStyle={styles.bottomContainer} extraHeight={200}>
-        <Modal visible={this.state.modalDeleteVisible} animationType='fade'
-          transparent={true} >
-
-        </Modal>
-
-          
-
-
-      </ScrollView>
-    );
-  }
+  return (
+    <GiftedChat
+      messages={messages}
+      onSend={messages => onSend(messages)}
+      user={{
+        _id: 1,
+      }}
+    />
+  )
 }
-
-export default ChatboxComponent;
-
-

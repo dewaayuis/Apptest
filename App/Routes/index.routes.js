@@ -65,7 +65,7 @@ function  MainRoutes () {
   return (
     <NavigationContainer>
       <Stack.Navigator     
-        initialRouteName='Home'>
+        initialRouteName='Login'>
         <Stack.Screen
           name='Login'
           component={ContactListPage}

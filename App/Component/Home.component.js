@@ -83,37 +83,7 @@ class HomeScreenComponent extends React.Component {
   }
   
   goLivechat = () => {
-  //   this.props.navigation.navigate('Chatbox');
-    const [messages, setMessages] = useState([]);
-
-  useEffect(() => {
-    setMessages([
-      {
-        _id: 1,
-        text: 'Hello developer',
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'React Native',
-          avatar: 'https://placeimg.com/140/140/any',
-        },
-      },
-    ])
-  }, [])
-
-  const onSend = useCallback((messages = []) => {
-    setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
-  }, [])
-
-  return (
-    <GiftedChat
-      messages={'hello'}
-      onSend={messages => onSend(messages)}
-      user={{
-        _id: 1,
-      }}
-    />
-  )
+    this.props.navigation.navigate('Chatbox');
   }
   // onChangeText=(nextTexttype = '') => {
   //   this.setState({filtering: nextTexttype});

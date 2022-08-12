@@ -2,9 +2,9 @@ import React from 'react';
 import {Image, Text, View, TouchableOpacity, TextInput, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
 import {result} from 'lodash';
-import styles from './ContactForm.styles';
+import styles from './AboutUs.styles';
 
-class ContactFormComponent extends React.Component {
+class AboutUsComponent extends React.Component {
   static propTypes = {
     navigation: PropTypes.object,
     gotoFuncSaveContactApi: PropTypes.func,
@@ -81,7 +81,7 @@ class ContactFormComponent extends React.Component {
     return (
       <ScrollView contentContainerStyle={styles.bottomContainer} extraHeight={200}>
         <View>
-          <View style={styles.containerContactTitle}>
+          {/* <View style={styles.containerContactTitle}>
             <Text style={styles.contactTitle}>{isEditing === 'editing' ? 'Edit Contact' : 'Add Contact'}</Text>
           </View>
 
@@ -108,8 +108,8 @@ class ContactFormComponent extends React.Component {
             maxLength={30}
             value={this.state.lastName}
           />
-          </View>
-          {this.state.errorValueLastName && this.state.lastName !== '' && <View style={styles.errorContainer}><Text style={styles.errorText}>Last Name must at least 3 characters, max 30 characters</Text></View>}
+          </View> */}
+          {/* {this.state.errorValueLastName && this.state.lastName !== '' && <View style={styles.errorContainer}><Text style={styles.errorText}>Last Name must at least 3 characters, max 30 characters</Text></View>}
           <View style={styles.containerSearch}>
             <View style={styles.containerSearchText}>
               <Text style={styles.searchText}>Age<Text style={styles.strictRed}>*</Text></Text>
@@ -143,7 +143,18 @@ class ContactFormComponent extends React.Component {
             <TouchableOpacity style={styles.buttonShowMore} disabled={this.state.errorValueAge || this.state.firstName === '' || this.state.lastName === '' || this.state.Agetype === '' || this.state.urlPhoto === ''} onPress={this.onSubmitForm}>
               <Text style={styles.showmoreText}>Submit</Text>
             </TouchableOpacity>
-          </View>
+          </View> */}
+
+            <View style={styles.Cobacontainer1}>
+            <Text style={styles.Cobatitle1}>Tentang Kami</Text>
+
+            <View style={styles.Cobagaris1} />
+
+            <Text style={styles.CobaTulisan1}>Sinar Mas merupakan brand perusahaan yang aktif dalam tujuh pilar bisnis. Semua bisnis ini dikelola secara independen, tetapi memiliki sejarah dan nilai perusahaan yang sama.
+
+Sinar Mas berkomitmen pada standar bisnis, lingkungan, dan sosial tertinggi untuk pertumbuhan inklusif yang berkelanjutan. Kami menyatakan tanggung jawab yang kami rasakan untuk karyawan kami, mengambil inisiatif penting dalam pendidikan dan perawatan kesehatan. Berfokus pada pemenuhan kebutuhan dasar manusia, bisnis kami telah memberikan kontribusi yang kuat terhadap ekonomi nasional.</Text>
+
+            </View>
         </View>
       </ScrollView>
     );
@@ -154,4 +165,4 @@ class ContactFormComponent extends React.Component {
 
 
 
-export default ContactFormComponent;
+export default AboutUsComponent;

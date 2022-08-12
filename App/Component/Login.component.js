@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {Image, Text, View, TouchableOpacity, TextInput, ScrollView, Modal} from 'react-native';
 import PropTypes from 'prop-types';
-import {result, toLower, size} from 'lodash';
+import {result, toLower, size, values, sortedIndexOf} from 'lodash';
 import styles from './Login.styles';
 import {Formik} from 'formik';
 import * as yup from 'yup';
+import axios from 'axios';
+import { StackActions } from '@react-navigation/native';
 
 
 
@@ -22,10 +24,31 @@ class HomeScreenComponent extends React.Component {
   }
   
   goCreate = () => {
-    this.props.navigation.navigate('CreateAccount');
+    this.props.navigation.navigate('Home');
   }
   
-  
+  testApi = (values) => {
+    const {navigate} = this.props.navigation;
+    const options = {
+      method: 'post',
+      url: 'http://172.20.10.5:8080/restapi/myChatClient/login',
+      data: {username: values.email, password: values.password},
+      headers: {
+        'content-type': 'application/json'
+      }
+    };
+    axios.request(options).then(function (response) {
+      const data = response.data.message;
+      console.log('response', response);
+      console.log('data', data);
+      if (data === '00') {
+      navigate('Home');
+      }
+    }).catch(function (error) {
+      console.error(error);
+    });
+  }
+
   
   render () {
     
@@ -33,13 +56,14 @@ class HomeScreenComponent extends React.Component {
     const loginValidationSchema = yup.object().shape({
       email: yup
         .string()
-        .email("Please enter valid email")
         .required('Email Address is Required'),
       password: yup
         .string()
-        .min(8, ({ min }) => `Password must be at least ${min} characters`)
+        .min(6, ({ min }) => `Password must be at least ${min} characters`)
         .required('Password is required'),  
     })
+
+    // tembak login
 
 
     const {contactList = [], funcgetContactFromAPI} = this.props;
@@ -64,7 +88,12 @@ class HomeScreenComponent extends React.Component {
           <Formik
             validationSchema={loginValidationSchema}
             initialValues={{ email: '', password: '' }}
-            onSubmit={values => console.log(values)}
+            onSubmit={(values, actions) => {
+              setTimeout(() => {
+                this.testApi(values);
+                actions.setSubmitting(false);
+              }, 1000);
+            }}
           >
             {({
               handleChange,
@@ -103,10 +132,7 @@ class HomeScreenComponent extends React.Component {
                 <TouchableOpacity style={styles.buttonLiveChat} onPress={handleSubmit} title="LOGIN" disabled={!isValid}>
                 <Text style={styles.textButton}>Login</Text>
                 </TouchableOpacity>
-                 
-                 <TouchableOpacity style={styles.buttonLiveChat} onPress={this.goCreate}>
-                    <Text style={styles.textButton}>Start Live Chat</Text>
-                 </TouchableOpacity>
+                
               </>
             )}
           </Formik>

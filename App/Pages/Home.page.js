@@ -2,8 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {result} from 'lodash';
-import HomeScreenComponent from '../Component/Login.component';
+import HomeScreenComponent from '../Component/Home.component';
 import {getContactFromAPI, deleteContactApi} from '../State/function/generalFunction';
+import { values } from 'lodash';
 
 class HomeScreen extends React.Component {
   static propTypes = {

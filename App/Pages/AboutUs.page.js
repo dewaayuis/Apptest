@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {result} from 'lodash';
-import ContactFormComponent from '../Component/ContactForm.component';
+import AboutUsComponent from '../Component/AboutUs.component';
 import {saveContactApi, editContactApi} from '../State/function/generalFunction';
 
-class ContactFormComponentScreen extends React.Component {
+class AboutUsComponentScreen extends React.Component {
   static propTypes = {
     navigation: PropTypes.object,
     funcsaveContactApi: PropTypes.func,
@@ -22,7 +22,7 @@ class ContactFormComponentScreen extends React.Component {
       const {navigation} = this.props;
       const editingData = result(this.props, 'route.params.dataEditing', {});
     return (
-      <ContactFormComponent navigation={navigation} gotoFuncSaveContactApi={this.gotoFuncSaveContactApi} editingData={editingData} gotoFuncEditContactApi={this.gotoFuncEditContactApi}/>
+      <AboutUsComponent navigation={navigation} gotoFuncSaveContactApi={this.gotoFuncSaveContactApi} editingData={editingData} gotoFuncEditContactApi={this.gotoFuncEditContactApi}/>
     );
   }
 }
@@ -32,4 +32,4 @@ const mapDispatchToProps = (dispatch) => ({
   funceditContactApi:(data, navigationOption) => dispatch(editContactApi(data, navigationOption)),
 });
 
-export default connect(null, mapDispatchToProps)(ContactFormComponentScreen);
+export default connect(null, mapDispatchToProps)(AboutUsComponentScreen);
